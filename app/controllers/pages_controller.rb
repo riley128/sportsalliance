@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def myaccount
   end
+
+  def myevents
+  end
 end

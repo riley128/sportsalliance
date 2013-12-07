@@ -1,8 +1,11 @@
 Sportsalliance::Application.routes.draw do
+  resources :events
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                    controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   get "myaccount" => "pages#myaccount"
+  get "events" => "pages#myevents"
   root "pages#home"
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
@@ -21,7 +24,6 @@ Sportsalliance::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do
