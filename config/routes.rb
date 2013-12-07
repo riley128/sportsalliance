@@ -1,4 +1,6 @@
 Sportsalliance::Application.routes.draw do
+  get "myaccount" => "pages#myaccount"
+  root "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
