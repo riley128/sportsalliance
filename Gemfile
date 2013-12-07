@@ -25,6 +25,14 @@ group :production do
      gem 'rails_12factor'
 end
 
+#logging in users
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'nifty-generators'
+gem 'protected_attributes'
+
+
 
 
 
