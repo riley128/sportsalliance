@@ -32,6 +32,14 @@ gem 'omniauth-facebook'
 gem 'nifty-generators'
 gem 'protected_attributes'
 
+#protect information
+gem 'figaro'
+
+#get facebook info
+gem 'koala'
+
+#upload pictures
+gem 'paperclip'
 
 
 

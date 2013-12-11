@@ -5,7 +5,6 @@ class CreateEvents < ActiveRecord::Migration
     	t.string 	:event_name,              	:null => false, :default => ""
     	t.string 	:header,              		:null => false, :default => ""
     	t.string 	:sub_header,             	:null => false, :default => ""
-    	t.string 	:banner,              		:null => false, :default => ""
     	t.integer  	:price, 					:default => 20, :null => false
     	t.string 	:venue,              		:null => false, :default => ""
     	t.string 	:address,              		:null => false, :default => ""

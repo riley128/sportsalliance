@@ -11,21 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209034529) do
+ActiveRecord::Schema.define(version: 20131211032711) do
 
   create_table "events", force: true do |t|
-    t.string   "event_name",  default: "", null: false
-    t.string   "header",      default: "", null: false
-    t.string   "sub_header",  default: "", null: false
-    t.string   "banner",      default: "", null: false
-    t.integer  "price",       default: 20, null: false
-    t.string   "venue",       default: "", null: false
-    t.string   "address",     default: "", null: false
-    t.string   "description", default: "", null: false
+    t.string   "event_name",          default: "", null: false
+    t.string   "header",              default: "", null: false
+    t.string   "sub_header",          default: "", null: false
+    t.integer  "price",               default: 20, null: false
+    t.string   "venue",               default: "", null: false
+    t.string   "address",             default: "", null: false
+    t.string   "description",         default: "", null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   create_table "events_users", force: true do |t|
@@ -53,8 +56,22 @@ ActiveRecord::Schema.define(version: 20131209034529) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "provider",               default: "", null: false
+    t.string   "uid",                    default: "", null: false
+    t.string   "nickname",               default: "", null: false
+    t.string   "name",                   default: "", null: false
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
+    t.string   "image",                  default: "", null: false
+    t.string   "urls",                   default: "", null: false
+    t.string   "location",               default: "", null: false
+    t.string   "verified",               default: "", null: false
+    t.string   "token",                  default: "", null: false
+    t.datetime "expires_at",                          null: false
+    t.string   "expires",                default: "", null: false
+    t.string   "gender",                 default: "", null: false
+    t.string   "timezone",               default: "", null: false
+    t.string   "locale",                 default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

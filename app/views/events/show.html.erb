@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h1>Events</h1>
+
+<p>Event Name: 	<%= @event.event_name if @event.event_name %></p>
+<p>Header: 	 	<%= @event.header if @event.header %></p>
+<p>Sub Header: 	<%= @event.sub_header if @event.sub_header %></p>
+<p>Banner: 		<%= image_tag @event.banner.url %></p>
+<p>Price: 		<%= @event.price if @event.price %></p>
+<p>Venue: 		<%= @event.venue if @event.venue %></p>
+<p>Address: 	<%= @event.address if @event.address %></p>
+<p>Description: <%= @event.description if @event.description %></p>
+<p>Start Time: 	<%= @event.start_time if @event.start_time %></p>
+<p>End Time: 	<%= @event.end_time if @event.end_time %></p>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
