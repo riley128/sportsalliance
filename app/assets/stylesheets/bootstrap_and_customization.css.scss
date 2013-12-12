@@ -1,2 +1,56 @@
-$brand-primary: #f39c12;
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,500,700,800);
+
+
+
+
 @import 'bootstrap';
+
+.navbar {
+	margin-bottom:0px;
+	height:80px;
+}
+
+.navbar-default {
+	background-color: #ffffff;
+}
+
+.dropdown-toggle {
+	font-size:30px;
+}
+
+.glyphicon-chevron-down {
+	color:red;
+}
+
+.dropdown-menu li {
+	font-size:20px;
+}
+
+.carousel-caption {
+	left:75%;
+	right:6%;
+	padding:50px 0 20px 0;
+	bottom:0;
+	height:100%;
+
+	/*transparent background, all browsers */
+	background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.6);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.carousel-caption p {
+	font-weight:300;
+}
+
+.carousel-control {
+	width:7%
+}
+
+a:hover {
+	text-decoration:none;
+}

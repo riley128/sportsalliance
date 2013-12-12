@@ -1,3 +1,87 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.center {
+	text-align:center;
+	margin:0 auto;
+}
+
+.nav-shadow {
+	box-shadow: 0px 2px 4px;
+}
+
+
+.subnav {
+	background: #efefef;
+	height:35px;
+}
+
+.facebook-login {
+	background: url('/assets/facebook-login.png');
+	width:194px;
+	height:35px;
+	display: inline-block;
+	margin:25px 50px 0 0;
+}
+.facebook-login:hover {
+	background: url('/assets/facebook-login-hover.png');
+}
+
+body { 
+	padding-top: 70px;
+}
+
+*{
+	font-family: 'Alegreya Sans', sans-serif;
+	}
+
+.navbar-logo {
+	margin: 0 0 0 30px;
+}
+
+.bottom-links {
+	background: #efefef;
+	height:70px;
+}
+
+.bottom-links-holder {
+	margin-top:25px;
+}
+
+.copyright-section {
+	background: #ffffff;
+	height:50px;
+}
+
+.bottom-nav-links {
+	font-size:17px;
+	margin-right:30px;
+	display:inline;
+}
+
+.banner-shadow {
+	box-shadow: 0px 10px 50px -10px;
+}
+
+.reservation-button {
+	width:300px;
+	height:50px;
+	margin:40px 0 0 23px;
+	background: -webkit-gradient(linear, left bottom, right bottom, from(#b70100), to(#710000));
+	background: -moz-linear-gradient(left,  #b70100,  #710000);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b70100', endColorstr='#710000');
+}
+
+.reservation-button p {
+	padding: 14px;
+	font-weight:300;
+	font-size:20px;
+}
+
+.moregames {
+	margin:50px 0 0 0;
+}
+
+.moregames h2{
+	mfont-weight:300;
+}
