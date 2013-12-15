@@ -16,5 +16,6 @@ class AddOmniauthToUsers < ActiveRecord::Migration
     add_column :users, :gender, :string, :null => false, :default => ""
     add_column :users, :timezone, :string, :null => false, :default => ""
     add_column :users, :locale, :string, :null => false, :default => ""
+    add_column :users, :hometown, :string, :null => false, :default => ""
   end
 end

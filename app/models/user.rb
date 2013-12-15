@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :hometown, :password, :password_confirmation, :remember_me
 
 	 def self.from_omniauth(auth)
 	  where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
 	    user.gender = auth.extra.raw_info.gender
 	    user.timezone = auth.extra.raw_info.timezone
 	    user.locale = auth.extra.raw_info.locale
+	    user.hometown = auth.extra.raw_info.hometown.name	
 	  end
 	end
 

@@ -11,27 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211032711) do
+ActiveRecord::Schema.define(version: 20131215233349) do
 
-  create_table "events", force: true do |t|
-    t.string   "event_name",          default: "", null: false
-    t.string   "header",              default: "", null: false
-    t.string   "sub_header",          default: "", null: false
-    t.integer  "price",               default: 20, null: false
-    t.string   "venue",               default: "", null: false
-    t.string   "address",             default: "", null: false
-    t.string   "description",         default: "", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
-  end
-
-  create_table "events_users", force: true do |t|
+  create_table "event_users", force: true do |t|
     t.integer  "event_id"
     t.integer  "uid"
     t.boolean  "is_admin"
@@ -41,7 +23,34 @@ ActiveRecord::Schema.define(version: 20131211032711) do
     t.datetime "updated_at"
   end
 
-  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id", unique: true
+  add_index "event_users", ["event_id"], name: "index_event_users_on_event_id", unique: true
+
+  create_table "events", force: true do |t|
+    t.string   "event_name",                  default: "", null: false
+    t.string   "header",                      default: "", null: false
+    t.string   "sub_header",                  default: "", null: false
+    t.integer  "price",                       default: 20, null: false
+    t.string   "venue",                       default: "", null: false
+    t.string   "address",                     default: "", null: false
+    t.string   "description",                 default: "", null: false
+    t.datetime "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+    t.string   "banner600x2000_file_name"
+    t.string   "banner600x2000_content_type"
+    t.integer  "banner600x2000_file_size"
+    t.datetime "banner600x2000_updated_at"
+    t.string   "bannersquare_file_name"
+    t.string   "bannersquare_content_type"
+    t.integer  "bannersquare_file_size"
+    t.datetime "bannersquare_updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 20131211032711) do
     t.string   "gender",                 default: "", null: false
     t.string   "timezone",               default: "", null: false
     t.string   "locale",                 default: "", null: false
+    t.string   "hometown",               default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -9,6 +9,7 @@ class CreateEvents < ActiveRecord::Migration
     	t.string 	:venue,              		:null => false, :default => ""
     	t.string 	:address,              		:null => false, :default => ""
     	t.string 	:description,              	:null => false, :default => ""
+        t.datetime  :date
     	t.datetime 	:start_time
     	t.datetime 	:end_time
 

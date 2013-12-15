@@ -1,15 +1,58 @@
-<h1>Events</h1>
+<div style="background: url(<%= @event.banner600x2000.url %>);height:600px;width:100%;">
+	<div class="container">
+		<div class="event-page-header-hold">
+			<div class="event-page-header">
+				<h1><i><%= @event.header if @event.header %></i></h1>
+				<h3><i><%= @event.sub_header if @event.sub_header %></i></h3>
+			</div>
+			<div class="buy-box">
+				<div class="price center">
+					<h3>Price: $<%= @event.price if @event.price %></h3>
+					<div class="reservation-button center">
+	        			<h2>LOG IN TO BUY</h2>
+	        		</div>
+	        		<p>WE WILL NEVER POST WITHOUT YOUR PERMISSION</p>
+				</div>
+				<div class="ticketing-close">
+					<p>TICKETING WILL CLOSE 3 HOURS BEFORE THE EVENT.  TICKETS CAN BE BOUGHT AT THE DOOR FOR <%= @event.price if @event.price %> IF AVAILABLE</p>
+				</div>
+			</div>
+		</div>
 
-<p>Event Name: 	<%= @event.event_name if @event.event_name %></p>
-<p>Header: 	 	<%= @event.header if @event.header %></p>
-<p>Sub Header: 	<%= @event.sub_header if @event.sub_header %></p>
-<p>Banner: 		<%= image_tag @event.banner.url %></p>
-<p>Price: 		<%= @event.price if @event.price %></p>
-<p>Venue: 		<%= @event.venue if @event.venue %></p>
-<p>Address: 	<%= @event.address if @event.address %></p>
-<p>Description: <%= @event.description if @event.description %></p>
-<p>Start Time: 	<%= @event.start_time if @event.start_time %></p>
-<p>End Time: 	<%= @event.end_time if @event.end_time %></p>
+
+	</div>
+</div>
+
+	<div class="container" style="background: #efefef;margin-top:-100px;">
+
+			<div style="width:47%;float:left;margin-left:3%;padding-top:10px; border-bottom:1px solid black;height:130px;">
+				<p><%= @event.description if @event.description %></p>
+			</div>
+			<div style="width:47%;float:left; margin-right:3%; padding-top:10px; border-bottom:1px solid black;height:130px;">
+				<div style="#">
+					<div style="width:50%;float:left;border-bottom:1px solid black; border-right:1px solid black;height:50px;">
+						<p><%= @event.date.strftime("%B #{@event.date.day.ordinalize}, %Y") if @event.date %></p>
+					</div>
+					<div style="width:50%;float:left;border-bottom:1px solid black;border-left:1px solid black;height:50px;">
+						<p><%= @event.start_time.strftime("%I:%M %P") if @event.start_time %> to <%= @event.end_time.strftime("%I:%M %P") if @event.end_time %></p>
+					</div>
+				</div>
+
+				<div class="center">
+					<h2><%= @event.venue if @event.venue %></h2>
+					<%= @event.address if @event.address %>
+				</div>
+			</div>
+
+	</div>
+
+
+
+
+
+
+
+
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

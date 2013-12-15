@@ -27,8 +27,18 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :banner %>
+    <%= f.label :banner_450x2000 %>
     <%= f.file_field :banner, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :banner_600x2000 %>
+    <%= f.file_field :banner600x2000, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :banner_square %>
+    <%= f.file_field :bannersquare, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -51,6 +61,10 @@
     <%= f.text_field :description, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_select :date,:start_year => 2013 %>
+  </div>
   <div class="form-group">
     <%= f.label :start_time %>
     <%= f.text_field :start_time, class: "form-control" %>
