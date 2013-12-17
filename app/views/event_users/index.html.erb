@@ -3,6 +3,15 @@
 <table>
   <thead>
     <tr>
+      <th>Event</th>
+      <th>Uid</th>
+      <th>Event name</th>
+      <th>Email</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Is admin</th>
+      <th>Is host</th>
+      <th>Is guest</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +21,15 @@
   <tbody>
     <% @event_users.each do |event_user| %>
       <tr>
+        <td><%= event_user.event_id %></td>
+        <td><%= event_user.uid %></td>
+        <td><%= event_user.event_name %></td>
+        <td><%= event_user.email %></td>
+        <td><%= event_user.first_name %></td>
+        <td><%= event_user.last_name %></td>
+        <td><%= event_user.is_admin %></td>
+        <td><%= event_user.is_host %></td>
+        <td><%= event_user.is_guest %></td>
         <td><%= link_to 'Show', event_user %></td>
         <td><%= link_to 'Edit', edit_event_user_path(event_user) %></td>
         <td><%= link_to 'Destroy', event_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

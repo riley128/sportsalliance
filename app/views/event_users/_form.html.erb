@@ -11,6 +11,42 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :event_id %><br>
+    <%= f.number_field :event_id %>
+  </div>
+  <div class="field">
+    <%= f.label :uid %><br>
+    <%= f.number_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :event_name %><br>
+    <%= f.text_field :event_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :is_admin %><br>
+    <%= f.check_box :is_admin %>
+  </div>
+  <div class="field">
+    <%= f.label :is_host %><br>
+    <%= f.check_box :is_host %>
+  </div>
+  <div class="field">
+    <%= f.label :is_guest %><br>
+    <%= f.check_box :is_guest %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

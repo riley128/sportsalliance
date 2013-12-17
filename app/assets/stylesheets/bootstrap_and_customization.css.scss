@@ -18,7 +18,7 @@
 	font-size:30px;
 }
 
-.glyphicon-chevron-down {
+.glyphicon-chevron-down,.glyphicon-chevron-left, .glyphicon-chevron-right {
 	color:red;
 }
 
@@ -45,6 +45,11 @@
 
 .carousel-caption p {
 	font-weight:300;
+}
+
+.carousel-caption h3 {
+	font-weight:300;
+	font-size:30px;
 }
 
 .carousel-control {

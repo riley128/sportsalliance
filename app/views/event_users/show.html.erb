@@ -1,4 +1,49 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Event:</strong>
+  <%= @event_user.event_id %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @event_user.uid %>
+</p>
+
+<p>
+  <strong>Event name:</strong>
+  <%= @event_user.event_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @event_user.email %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @event_user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @event_user.last_name %>
+</p>
+
+<p>
+  <strong>Is admin:</strong>
+  <%= @event_user.is_admin %>
+</p>
+
+<p>
+  <strong>Is host:</strong>
+  <%= @event_user.is_host %>
+</p>
+
+<p>
+  <strong>Is guest:</strong>
+  <%= @event_user.is_guest %>
+</p>
+
 <%= link_to 'Edit', edit_event_user_path(@event_user) %> |
 <%= link_to 'Back', event_users_path %>

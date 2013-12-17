@@ -7,14 +7,27 @@
 			</div>
 			<div class="buy-box">
 				<div class="price center">
-					<h3>Price: $<%= @event.price if @event.price %></h3>
-					<div class="reservation-button center">
-	        			<h2>LOG IN TO BUY</h2>
-	        		</div>
-	        		<p>WE WILL NEVER POST WITHOUT YOUR PERMISSION</p>
+					<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
+					<p style="font-size:20px;">Current Price</p>
+					<% if user_signed_in? %>
+						<%= form_tag event_users_path do %>
+
+						  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+						          data-description="<%= @event.header %>"
+						          data-amount="<%= @event_price %>"
+						          data-email="<%= current_user.email %>"
+								  data-image="<%= @event.bannersquare %>"
+							      data-name = "Sports Alliance"></script>
+						<% end %>
+					<% else %>
+
+						<a class="event-login-button center" href="/users/auth/facebook"><h2>LOG IN TO BUY</h2></a>
+						<p>WE WILL NEVER POST WITHOUT YOUR PERMISSION</p>
+	        		<% end %>
 				</div>
 				<div class="ticketing-close">
-					<p>TICKETING WILL CLOSE 3 HOURS BEFORE THE EVENT.  TICKETS CAN BE BOUGHT AT THE DOOR FOR <%= @event.price if @event.price %> IF AVAILABLE</p>
+					<p>TICKETING WILL CLOSE 3 HOURS BEFORE THE EVENT.  TICKETS CAN BE BOUGHT AT THE DOOR FOR $<%= @event.price if @event.price %> IF AVAILABLE</p>
 				</div>
 			</div>
 		</div>
@@ -42,6 +55,10 @@
 					<h2><%= @event.venue if @event.venue %></h2>
 					<%= @event.address if @event.address %>
 				</div>
+			</div>
+
+			<div>
+				<h2>The Guests</h2>
 			</div>
 
 	</div>

@@ -64,9 +64,9 @@ body {
 }
 
 .reservation-button {
-	width:325px;
+	width:90%;
 	height:50px;
-	margin:10px 0 0 23px;
+	margin:20px 0 0 23px;
 	background: #bc0100;
 }
 
@@ -74,10 +74,10 @@ body {
 	background: #660000;
 }
 
-.reservation-button h2 {
+.reservation-button p {
 	padding: 14px;
 	font-weight:300;
-	font-size:25px;
+	font-size:1.4em;
 	color:white;
 	}
 
@@ -141,3 +141,22 @@ body {
 	font-size:9px;
 	padding:2px;
 }
+
+.event-login-button {
+	width:325px;
+	height:50px;
+	margin:10px 0 0 23px;
+	background: #bc0100;
+	display:block;
+}
+
+.event-login-button:hover {
+	background: #660000;
+}
+
+.event-login-button h2 {
+	padding: 14px;
+	font-weight:300;
+	font-size:25px;
+	color:white;
+	}

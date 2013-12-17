@@ -41,6 +41,9 @@ gem 'koala'
 #upload pictures
 gem 'paperclip'
 
+#payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 
 
 

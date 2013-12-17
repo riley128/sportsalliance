@@ -4,4 +4,6 @@ class Event < ActiveRecord::Base
 	has_attached_file :banner, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	has_attached_file :banner600x2000, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	has_attached_file :bannersquare, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+
 end
