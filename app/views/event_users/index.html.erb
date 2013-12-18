@@ -12,6 +12,7 @@
       <th>Is admin</th>
       <th>Is host</th>
       <th>Is guest</th>
+      <th>Stripe card token</th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,6 +31,7 @@
         <td><%= event_user.is_admin %></td>
         <td><%= event_user.is_host %></td>
         <td><%= event_user.is_guest %></td>
+        <td><%= event_user.stripe_card_token %></td>
         <td><%= link_to 'Show', event_user %></td>
         <td><%= link_to 'Edit', edit_event_user_path(event_user) %></td>
         <td><%= link_to 'Destroy', event_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

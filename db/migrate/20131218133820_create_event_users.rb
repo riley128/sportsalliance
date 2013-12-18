@@ -10,6 +10,7 @@ class CreateEventUsers < ActiveRecord::Migration
       t.boolean :is_admin
       t.boolean :is_host
       t.boolean :is_guest
+      t.string :stripe_card_token
 
       t.timestamps
     end

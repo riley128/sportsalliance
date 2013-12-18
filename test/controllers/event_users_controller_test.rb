@@ -18,7 +18,7 @@ class EventUsersControllerTest < ActionController::TestCase
 
   test "should create event_user" do
     assert_difference('EventUser.count') do
-      post :create, event_user: { email: @event_user.email, event_id: @event_user.event_id, event_name: @event_user.event_name, first_name: @event_user.first_name, is_admin: @event_user.is_admin, is_guest: @event_user.is_guest, is_host: @event_user.is_host, last_name: @event_user.last_name, uid: @event_user.uid }
+      post :create, event_user: { email: @event_user.email, event_id: @event_user.event_id, event_name: @event_user.event_name, first_name: @event_user.first_name, is_admin: @event_user.is_admin, is_guest: @event_user.is_guest, is_host: @event_user.is_host, last_name: @event_user.last_name, stripe_card_token: @event_user.stripe_card_token, uid: @event_user.uid }
     end
 
     assert_redirected_to event_user_path(assigns(:event_user))
@@ -35,7 +35,7 @@ class EventUsersControllerTest < ActionController::TestCase
   end
 
   test "should update event_user" do
-    patch :update, id: @event_user, event_user: { email: @event_user.email, event_id: @event_user.event_id, event_name: @event_user.event_name, first_name: @event_user.first_name, is_admin: @event_user.is_admin, is_guest: @event_user.is_guest, is_host: @event_user.is_host, last_name: @event_user.last_name, uid: @event_user.uid }
+    patch :update, id: @event_user, event_user: { email: @event_user.email, event_id: @event_user.event_id, event_name: @event_user.event_name, first_name: @event_user.first_name, is_admin: @event_user.is_admin, is_guest: @event_user.is_guest, is_host: @event_user.is_host, last_name: @event_user.last_name, stripe_card_token: @event_user.stripe_card_token, uid: @event_user.uid }
     assert_redirected_to event_user_path(assigns(:event_user))
   end
 

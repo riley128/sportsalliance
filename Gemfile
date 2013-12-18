@@ -42,7 +42,7 @@ gem 'koala'
 gem 'paperclip'
 
 #payments
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
 
 
 

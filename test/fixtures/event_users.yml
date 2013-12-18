@@ -10,6 +10,7 @@ one:
   is_admin: false
   is_host: false
   is_guest: false
+  stripe_card_token: MyString
 
 two:
   event_id: 1
@@ -21,3 +22,4 @@ two:
   is_admin: false
   is_host: false
   is_guest: false
+  stripe_card_token: MyString

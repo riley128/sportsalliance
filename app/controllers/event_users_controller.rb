@@ -27,7 +27,7 @@ class EventUsersController < ApplicationController
     @event_user = EventUser.new(event_user_params)
 
     respond_to do |format|
-      if @event_user.save
+      if @event_user.save_with_payment
         format.html { redirect_to @event_user, notice: 'Event user was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event_user }
       else
@@ -69,6 +69,6 @@ class EventUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_user_params
-      params.require(:event_user).permit(:event_id, :uid, :event_name, :email, :first_name, :last_name, :is_admin, :is_host, :is_guest)
+      params.require(:event_user).permit(:event_id, :uid, :event_name, :email, :first_name, :last_name, :is_admin, :is_host, :is_guest, :stripe_card_token)
     end
 end
