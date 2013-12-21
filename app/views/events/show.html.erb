@@ -10,10 +10,7 @@
 					<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
 					<p style="font-size:20px;">Current Price</p>
 					<% if user_signed_in? %>
-						<form action="/charge" method="POST">
-						 
-							<a class="event-login-button center" href="/event_users/new" onclick="form.submit();"><h2>RESERVE A SPOT</h2></a>
-						</form>
+						<a href="<%= event_checkout_url(@event) %>">Foo</a>
 						<p></p>
 						  
 					<% else %>
@@ -32,29 +29,41 @@
 	</div>
 </div>
 
-	<div class="container" style="background: #efefef;margin-top:-100px;">
+	<div class="container" style="background: #efefef;margin-top:-140px;">
 
-			<div style="width:47%;float:left;margin-left:3%;padding-top:10px; border-bottom:1px solid black;height:130px;">
+			<div style="width:47%;float:left;margin-left:3%;padding-top:15px;padding-right:30px; border-bottom:1px solid black;height:140px;">
 				<p><%= @event.description if @event.description %></p>
 			</div>
-			<div style="width:47%;float:left; margin-right:3%; padding-top:10px; border-bottom:1px solid black;height:130px;">
+			<div style="width:47%;float:left; margin-right:3%; padding-top:10px; border-bottom:1px solid black;height:140px;">
 				<div style="#">
 					<div style="width:50%;float:left;border-bottom:1px solid black; border-right:1px solid black;height:50px;">
-						<p><%= @event.date.strftime("%B #{@event.date.day.ordinalize}, %Y") if @event.date %></p>
+						<p><span style="padding: 0 10px 20px 0;" class="glyphicon glyphicon-calendar"></span><%= @event.date.strftime("%A, %B #{@event.date.day.ordinalize}") if @event.date %></p>
 					</div>
 					<div style="width:50%;float:left;border-bottom:1px solid black;border-left:1px solid black;height:50px;">
-						<p><%= @event.start_time.strftime("%I:%M %P") if @event.start_time %> to <%= @event.end_time.strftime("%I:%M %P") if @event.end_time %></p>
+						<p style="padding: 20px 0 0 10px;"><%= @event.start_time.strftime("%I:%M %P") if @event.start_time %> to <%= @event.end_time.strftime("%I:%M %P") if @event.end_time %></p>
 					</div>
 				</div>
 
-				<div class="center">
-					<h2><%= @event.venue if @event.venue %></h2>
-					<%= @event.address if @event.address %>
+				<div style="width:100%;height:100%;float:left;" class="center">
+					<h2 style="margin-top:12px;font-size:25px;"><%= @event.venue if @event.venue %></h2>
+					<p><%= @event.address if @event.address %></p>
 				</div>
 			</div>
 
 			<div>
 				<h2>The Guests</h2>
+				<% @event_users.each do |eu| %>
+					<div class="panel panel-default" style="width:152px; margin:5px;">
+						<img src="<%= @users.find(eu).image %>" alt="<%= @users.find(eu).name %>" width="150" height="150" />
+						<div class="panel-body">
+							<p><%= @users.find(eu).first_name %><br>
+								<%= @users.find(eu).last_name %>
+							</p>
+						</div>
+					</div>
+				<% end %>
+				
+				
 			</div>
 
 	</div>

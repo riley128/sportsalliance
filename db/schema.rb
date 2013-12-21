@@ -11,23 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218134421) do
-
-  create_table "event_users", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "uid"
-    t.string   "event_name"
-    t.string   "email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "is_admin"
-    t.boolean  "is_host"
-    t.boolean  "is_guest"
-    t.string   "stripe_card_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "stripe_customer_token"
-  end
+ActiveRecord::Schema.define(version: 20131220004240) do
 
   create_table "events", force: true do |t|
     t.string   "event_name",                  default: "", null: false
@@ -55,6 +39,18 @@ ActiveRecord::Schema.define(version: 20131218134421) do
     t.integer  "bannersquare_file_size"
     t.datetime "bannersquare_updated_at"
   end
+
+  create_table "events_users", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.boolean  "is_admin"
+    t.boolean  "is_host"
+    t.boolean  "is_guest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

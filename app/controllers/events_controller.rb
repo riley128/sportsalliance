@@ -10,6 +10,19 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @users = User.all
+    @event_users = EventUser.where event_id: params[:id]  
+  end
+
+  def checkout
+    @event = Event.find(params[:id])
+  end
+
+  def register_user
+    @event_user = EventUser.all
+    e = Event.find(params[:id])
+    e.add_guest(current_user)
+    redirect_to events_url, status: :see_other
   end
 
   # GET /events/new

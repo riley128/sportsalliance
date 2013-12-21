@@ -1,8 +1,4 @@
-Sportsalliance::Application.routes.draw do
-  resources :event_users
-
-  resources :event_users  
-  resources :events
+Sportsalliance::Application.routes.draw do  resources :events
   resources :charges
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
@@ -15,6 +11,9 @@ Sportsalliance::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
+  get "/events/:id/checkout" => "events#checkout", :as => "event_checkout"
+  post "/events/:id/register" => "events#register_user", :as => "event_register"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
