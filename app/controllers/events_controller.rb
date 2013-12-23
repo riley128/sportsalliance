@@ -20,8 +20,11 @@ class EventsController < ApplicationController
 
   def register_user
     @event_user = EventUser.all
-    e = Event.find(params[:id])
-    e.add_guest(current_user)
+    event = Event.find(params[:id])
+    if SportsAlliance::StripePaymentCharger.charge(1.00, :currency => SportsAlliance::PaymentCharger::CURRENCY_USD, :stripe_card_token => stripe_card_token, :event => event)
+      event.add_guest(current_user)
+    end
+
     redirect_to events_url, status: :see_other
   end
 

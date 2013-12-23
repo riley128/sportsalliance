@@ -1,86 +1,92 @@
-<form accept-charset="UTF-8" action="<%= event_register_url(@event) %>" class="new_checkout" id="new_checkout" method="post">
-<%= token_tag nil -%>
-  <div class="field">
-    <label for="event_user_event_name">Event name</label><br>
-    <input id="event_user_event_name" name="event_user[event_name]" type="text" />
-  </div>
-  <div class="field">
-    <label for="event_user_email">Email</label><br>
-    <input id="event_user_email" name="event_user[email]" type="text" />
-  </div>
-  <div class="field">
-    <label for="event_user_first_name">First name</label><br>
-    <input id="event_user_first_name" name="event_user[first_name]" type="text" />
-  </div>
-  <div class="field">
-    <label for="event_user_last_name">Last name</label><br>
-    <input id="event_user_last_name" name="event_user[last_name]" type="text" />
-  </div>
-  <div class="field">
-    <label for="event_user_is_admin">Is admin</label><br>
-    <input name="event_user[is_admin]" type="hidden" value="0" /><input id="event_user_is_admin" name="event_user[is_admin]" type="checkbox" value="1" />
-  </div>
-  <div class="field">
-    <label for="event_user_is_host">Is host</label><br>
-    <input name="event_user[is_host]" type="hidden" value="0" /><input id="event_user_is_host" name="event_user[is_host]" type="checkbox" value="1" />
-  </div>
-  <div class="field">
-    <label for="event_user_is_guest">Is guest</label><br>
-    <input name="event_user[is_guest]" type="hidden" value="0" /><input id="event_user_is_guest" name="event_user[is_guest]" type="checkbox" value="1" />
-  </div>
-  <div class="field">
-    <label for="event_user_stripe_card_token">Stripe card token</label><br>
-    <input id="event_user_stripe_card_token" name="event_user[stripe_card_token]" type="text" />
-  </div>
-  <div class="field">
-    <label for="card_number">Credit Card Number</label>
-    <input id="card_number" type="text" />
-  </div>
-  <div class="field">
-    <label for="card_code">Security Code on Card (CVV)</label>
-    <input id="card_code" type="text" />
-  </div>
-  <div class="field">
-    <label for="card_month">Card Expiration</label>
-    <select id="card_month">
-<option value="1">1 - January</option>
-<option value="2">2 - February</option>
-<option value="3">3 - March</option>
-<option value="4">4 - April</option>
-<option value="5">5 - May</option>
-<option value="6">6 - June</option>
-<option value="7">7 - July</option>
-<option value="8">8 - August</option>
-<option value="9">9 - September</option>
-<option value="10">10 - October</option>
-<option value="11">11 - November</option>
-<option value="12">12 - December</option>
-</select>
 
-    <select id="card_year">
-<option value="2013">2013</option>
-<option value="2014">2014</option>
-<option value="2015">2015</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
-<option value="2018">2018</option>
-<option value="2019">2019</option>
-<option value="2020">2020</option>
-<option value="2021">2021</option>
-<option value="2022">2022</option>
-<option value="2023">2023</option>
-<option value="2024">2024</option>
-<option value="2025">2025</option>
-<option value="2026">2026</option>
-<option value="2027">2027</option>
-<option value="2028">2028</option>
-</select>
 
-  </div>
-  <div id="stripe_error">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
-  <div class="actions">
-    <input name="commit" type="submit" value="Create Event user" />
-  </div>
-</form>
+<div class="container">
+	<div class="panel panel-default" style="margin-top:20px;">
+	  <div class="panel-heading">
+	    <h1>Checkout</h1>
+	  </div>
+	  <div class="panel-body">
+		<form accept-charset="UTF-8" action="<%= event_register_url(@event) %>" class="new_checkout" id="new_checkout" method="post">
+		<%= token_tag nil -%>
+		  <div class="field">
+		    <input id="event_user_event_name" name="event_user[event_name]" type="hidden" />
+		  </div>
+		  <div class="field form-group">
+		  	<label for="event_user_email">Email</label><br>
+		    <input id="event_user_email" name="event_user[email]" type="text" value="<%= current_user.email %>" class="form-control" style="width:300px;" />
+		  </div>
+		  <div class="field form-group">
+		    <label for="event_user_first_name">First name</label><br>
+		    <input id="event_user_first_name" name="event_user[first_name]" type="text" value="<%= current_user.first_name %>" class="form-control" style="width:400px;" />
+		  </div>
+		  <div class="field form-group">
+		    <label for="event_user_last_name">Last name</label><br>
+		    <input id="event_user_last_name" name="event_user[last_name]" type="text" value="<%= current_user.last_name %>" class="form-control" style="width:400px;" />
+		  </div>
+		  <div class="field">
+		    <input name="event_user[is_admin]" type="hidden" value="0" />
+		  </div>
+		  <div class="field">
+		    <input name="event_user[is_host]" type="hidden" value="0" />
+		  </div>
+		  <div class="field">
+		    <input name="event_user[is_guest]" type="hidden" value="1" />
+		  </div>
+		  <div class="field">
+		    <input id="event_user_stripe_card_token" name="event_user[stripe_card_token]" type="hidden" />
+		  </div>
+		  <div class="field form-group">
+		    <label for="card_number">Credit Card Number</label>
+		    <input id="card_number" type="text" class="form-control" style="width:160px;" />
+		  </div>
+		  <div class="field form-group">
+		    <label for="card_code">Security Code on Card (CVV)</label>
+		    <input id="card_code" type="text" class="form-control" style="width:70px;" />
+		  </div>
+		  <div class="field form-group">
+		    <label for="card_month">Card Expiration</label>
+		    <select id="card_month">
+		<option value="1">1 - January</option>
+		<option value="2">2 - February</option>
+		<option value="3">3 - March</option>
+		<option value="4">4 - April</option>
+		<option value="5">5 - May</option>
+		<option value="6">6 - June</option>
+		<option value="7">7 - July</option>
+		<option value="8">8 - August</option>
+		<option value="9">9 - September</option>
+		<option value="10">10 - October</option>
+		<option value="11">11 - November</option>
+		<option value="12">12 - December</option>
+		</select>
+
+		    <select id="card_year">
+		<option value="2013">2013</option>
+		<option value="2014">2014</option>
+		<option value="2015">2015</option>
+		<option value="2016">2016</option>
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+		<option value="2019">2019</option>
+		<option value="2020">2020</option>
+		<option value="2021">2021</option>
+		<option value="2022">2022</option>
+		<option value="2023">2023</option>
+		<option value="2024">2024</option>
+		<option value="2025">2025</option>
+		<option value="2026">2026</option>
+		<option value="2027">2027</option>
+		<option value="2028">2028</option>
+		</select>
+
+		  </div>
+		  <div id="stripe_error">
+		    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+		  </div>
+		  <div class="actions form-group">
+		    <input name="commit" type="submit" value="Register" class="btn btn-primary" />
+		  </div>
+		</form>
+	</div>
+	</div>
+</div>
