@@ -44,6 +44,8 @@ gem 'paperclip'
 #payments
 gem 'stripe'
 
+#loading
+gem 'jquery-turbolinks'
 
 
 

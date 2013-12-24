@@ -13,7 +13,8 @@ module SportsAlliance
     end
 
     def record_charges(amt, opts)
-      # HANDLE CREATING ANY NEW ACTIVE RECORD INSTANCES HERE
+
+
     end
   end
 
@@ -22,15 +23,12 @@ module SportsAlliance
     def self.apply_charges(amt, opts)
       Stripe::Charge.create(
       :amount => amt,
-      :currency => CURRENCY_USD,
-      :card => stripe_card_token, # obtained with Stripe.js
+      :currency => opts[:currency],
+      :card => opts[:stripe_card_token], # obtained with Stripe.js
       :description => "Charge for test@example.com"
     )
 
-      rescue Stripe::InvalidRequestError => e
-        logger.error "Stripe error while creating customer: #{e.message}"
-        errors.add :base, "There was a problem with your credit card."
-        false
+
     end
   end
 end

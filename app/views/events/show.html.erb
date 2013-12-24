@@ -1,4 +1,4 @@
-<div style="background: url(<%= @event.banner600x2000.url %>);height:600px;width:100%;">
+<div style="background: url(<%= asset_path @event.banner600x2000.url %>);height:600px;width:100%;">
 	<div class="container">
 		<div class="event-page-header-hold">
 			<div class="event-page-header">
@@ -7,10 +7,25 @@
 			</div>
 			<div class="buy-box">
 				<div class="price center">
-					<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
-					<p style="font-size:20px;">Current Price</p>
 					<% if user_signed_in? %>
-						<a href="<%= event_checkout_url(@event) %>">Foo</a>
+						<h3><span class="glyphicon glyphicon-chevron-down"></span></span></h3><br>
+						<%if @event_users.find(current_user).user_id? %>
+							<p style="font-size:20px;">You're Going!</p>
+						<% else %>
+						  <h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
+							<p style="font-size:20px;">Current Price</p>
+						<% end %>
+					<% else %>
+						<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
+						<p style="font-size:20px;">Current Price</p>
+					<% end %>
+
+					<% if user_signed_in? %>
+						<%if @event_users.find(current_user).user_id? %>
+							<a class="event-login-button center" href="#"><h2>INVITE FRIENDS</h2></a>
+						<% else %>
+							<a class="event-login-button center" href="<%= event_checkout_url(@event) %>"><h2>SIGN UP</h2></a>
+						<% end %>
 						<p></p>
 						  
 					<% else %>
@@ -29,7 +44,7 @@
 	</div>
 </div>
 
-	<div class="container" style="background: #efefef;margin-top:-140px;">
+	<div class="container" style="background: #efefef;margin-top:-140px; margin-bottom:30px;">
 
 			<div style="width:47%;float:left;margin-left:3%;padding-top:15px;padding-right:30px; border-bottom:1px solid black;height:140px;">
 				<p><%= @event.description if @event.description %></p>
@@ -50,14 +65,14 @@
 				</div>
 			</div>
 
-			<div>
-				<h2>The Guests</h2>
+			<div style="float:left;">
+				<h2 style="margin:20px 0 0 0;">The Guests</h2>
 				<% @event_users.each do |eu| %>
-					<div class="panel panel-default" style="width:152px; margin:5px;">
-						<img src="<%= @users.find(eu).image %>" alt="<%= @users.find(eu).name %>" width="150" height="150" />
-						<div class="panel-body">
-							<p><%= @users.find(eu).first_name %><br>
-								<%= @users.find(eu).last_name %>
+					<div class="panel panel-default" style="width:132px; margin:7px;float:left;">
+						<img src="<%= @users.find(eu).image %>" alt="<%= @users.find(eu).name %>" width="130" height="130" />
+						<div class="panel-body" style="margin:0;padding:0;">
+							<p style="padding:3px 0 0 5px;margin:0;"><%= @users.find(eu).first_name.truncate(17) %><br>
+								<%= @users.find(eu).last_name.truncate(17) %>
 							</p>
 						</div>
 					</div>
@@ -77,5 +92,5 @@
 
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<!--<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>-->

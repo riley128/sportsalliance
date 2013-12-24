@@ -19,9 +19,9 @@ class EventsController < ApplicationController
   end
 
   def register_user
-    @event_user = EventUser.all
+   
     event = Event.find(params[:id])
-    if SportsAlliance::StripePaymentCharger.charge(1.00, :currency => SportsAlliance::PaymentCharger::CURRENCY_USD, :stripe_card_token => stripe_card_token, :event => event)
+    if SportsAlliance::StripePaymentCharger.charge(event[:price]*100, :currency => SportsAlliance::PaymentCharger::CURRENCY_USD, :stripe_card_token => params[:checkout][:stripe_card_token], :event => event)
       event.add_guest(current_user)
     end
 

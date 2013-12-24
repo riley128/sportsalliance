@@ -8,6 +8,6 @@ class CreateEventsUsers < ActiveRecord::Migration
         t.boolean :is_guest
         t.timestamps
     end
-    add_index :events_users, :event_id, :unique => true
+    add_index :events_users, [:event_id,:user_id]
   end
 end

@@ -9,31 +9,34 @@
 		<form accept-charset="UTF-8" action="<%= event_register_url(@event) %>" class="new_checkout" id="new_checkout" method="post">
 		<%= token_tag nil -%>
 		  <div class="field">
-		    <input id="event_user_event_name" name="event_user[event_name]" type="hidden" />
+		    <input id="checkout_event_name" name="checkout[event_name]" type="hidden" />
+		  </div>
+		  <div class="field">
+		    <input id="checkout_event_name" name="checkout[event_name]" type="hidden" />
 		  </div>
 		  <div class="field form-group">
-		  	<label for="event_user_email">Email</label><br>
-		    <input id="event_user_email" name="event_user[email]" type="text" value="<%= current_user.email %>" class="form-control" style="width:300px;" />
+		  	<label for="checkout_email">Email</label><br>
+		    <input id="checkout_email" name="checkout[email]" type="text" value="<%= current_user.email %>" class="form-control" style="width:300px;" />
 		  </div>
 		  <div class="field form-group">
-		    <label for="event_user_first_name">First name</label><br>
-		    <input id="event_user_first_name" name="event_user[first_name]" type="text" value="<%= current_user.first_name %>" class="form-control" style="width:400px;" />
+		    <label for="checkout_first_name">First name</label><br>
+		    <input id="checkout_first_name" name="checkout[first_name]" type="text" value="<%= current_user.first_name %>" class="form-control" style="width:400px;" />
 		  </div>
 		  <div class="field form-group">
-		    <label for="event_user_last_name">Last name</label><br>
-		    <input id="event_user_last_name" name="event_user[last_name]" type="text" value="<%= current_user.last_name %>" class="form-control" style="width:400px;" />
+		    <label for="checkout_last_name">Last name</label><br>
+		    <input id="checkout_last_name" name="checkout[last_name]" type="text" value="<%= current_user.last_name %>" class="form-control" style="width:400px;" />
 		  </div>
 		  <div class="field">
-		    <input name="event_user[is_admin]" type="hidden" value="0" />
+		    <input name="checkout[is_admin]" type="hidden" value="0" />
 		  </div>
 		  <div class="field">
-		    <input name="event_user[is_host]" type="hidden" value="0" />
+		    <input name="checkout[is_host]" type="hidden" value="0" />
 		  </div>
 		  <div class="field">
-		    <input name="event_user[is_guest]" type="hidden" value="1" />
+		    <input name="checkout[is_guest]" type="hidden" value="1" />
 		  </div>
 		  <div class="field">
-		    <input id="event_user_stripe_card_token" name="event_user[stripe_card_token]" type="hidden" />
+		    <input id="checkout_stripe_card_token" name="checkout[stripe_card_token]" type="hidden" />
 		  </div>
 		  <div class="field form-group">
 		    <label for="card_number">Credit Card Number</label>

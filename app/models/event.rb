@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
     has_many :users, :through => :event_users
 
 	attr_accessible :event_name,:header,:sub_header,:banner, :banner600x2000, :bannersquare,:price,:venue,:address,:description,:date,:start_time, :end_time
+	attr_accessor :stripe_card_token
 
 	has_attached_file :banner, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	has_attached_file :banner600x2000, :styles => { :medium => "300x300>", :thumb => "100x100>" }
@@ -17,22 +18,6 @@ class Event < ActiveRecord::Base
         users_with_roles(:guest)
     end
 
-    def save_with_payment
-	  if valid?
-	  	Stripe::Charge.create(
-		  :amount => 400,
-		  :currency => "usd",
-		  :card => stripe_card_token, # obtained with Stripe.js
-		  :description => "Charge for test@example.com"
-		)
-	    
-	    save!
-	  end
-	rescue Stripe::InvalidRequestError => e
-	  logger.error "Stripe error while creating customer: #{e.message}"
-	  errors.add :base, "There was a problem with your credit card."
-	  false
-	end
 
 	private
     def get_event_user_for_user(user)
