@@ -28,6 +28,10 @@ class EventsController < ApplicationController
     redirect_to events_url, status: :see_other
   end
 
+
+  def invite
+  end
+
   # GET /events/new
   def new
     @event = Event.new

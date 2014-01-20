@@ -4,8 +4,12 @@ Sportsalliance::Application.routes.draw do  resources :events
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                    controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  get "myaccount" => "pages#myaccount"
-  get "events" => "pages#myevents"
+  get "faq" => "pages#faq"
+  get "team" => "pages#team"
+  get "howitworks" => "pages#how-it-works"
+  get "contact" => "pages#contact"
+  get "myteams" => "pages#myteams"
+  get "myevents" => "pages#myevents"
   root "pages#home"
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
@@ -13,6 +17,7 @@ Sportsalliance::Application.routes.draw do  resources :events
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get "/events/:id/checkout" => "events#checkout", :as => "event_checkout"
+  get "/events/:id/invite-facebook-friends" => "events#invite", :as => "event_invite"
   post "/events/:id/register" => "events#register_user", :as => "event_register"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

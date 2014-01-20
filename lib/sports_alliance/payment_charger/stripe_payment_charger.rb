@@ -11,11 +11,6 @@ module SportsAlliance
     def apply_charges(amt, opts)
       raise NotImplementedError
     end
-
-    def record_charges(amt, opts)
-
-
-    end
   end
 
   class StripePaymentCharger

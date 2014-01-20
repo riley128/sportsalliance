@@ -1,4 +1,4 @@
-<div style="background: url(<%= asset_path @event.banner600x2000.url %>);height:600px;width:100%;">
+<div style="background: url(<%= URI.join(request.url, @event.banner600x2000.url) %>) no-repeat;height:600px;width:100%;">
 	<div class="container">
 		<div class="event-page-header-hold">
 			<div class="event-page-header">
@@ -8,12 +8,12 @@
 			<div class="buy-box">
 				<div class="price center">
 					<% if user_signed_in? %>
-						<h3><span class="glyphicon glyphicon-chevron-down"></span></span></h3><br>
-						<%if @event_users.find(current_user).user_id? %>
-							<p style="font-size:20px;">You're Going!</p>
-						<% else %>
-						  <h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
+						<%if @event_users.where(:id => current_user.id).blank? %>
+							<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
 							<p style="font-size:20px;">Current Price</p>
+						<% else %>
+							<h3><span class="glyphicon glyphicon-chevron-down"></span></span></h3><br>
+							<p style="font-size:20px;">You're Going!</p>
 						<% end %>
 					<% else %>
 						<h3><span class="glyphicon glyphicon-chevron-right"></span> $<%= @event.price if @event.price %> </span></h3><br>
@@ -21,10 +21,10 @@
 					<% end %>
 
 					<% if user_signed_in? %>
-						<%if @event_users.find(current_user).user_id? %>
-							<a class="event-login-button center" href="#"><h2>INVITE FRIENDS</h2></a>
-						<% else %>
+						<%if @event_users.where(:id => current_user.id).blank? %>
 							<a class="event-login-button center" href="<%= event_checkout_url(@event) %>"><h2>SIGN UP</h2></a>
+						<% else %>
+							<a class="event-login-button center" href="#"><h2>INVITE FRIENDS</h2></a>
 						<% end %>
 						<p></p>
 						  
@@ -66,7 +66,7 @@
 			</div>
 
 			<div style="float:left;">
-				<h2 style="margin:20px 0 0 0;">The Guests</h2>
+				<h2 style="margin:20px 0 0 0;">Committed Fans</h2>
 				<% @event_users.each do |eu| %>
 					<div class="panel panel-default" style="width:132px; margin:7px;float:left;">
 						<img src="<%= @users.find(eu).image %>" alt="<%= @users.find(eu).name %>" width="130" height="130" />

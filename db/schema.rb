@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223055755) do
+ActiveRecord::Schema.define(version: 20131225011457) do
 
   create_table "checkouts", force: true do |t|
     t.string "email"
@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(version: 20131223055755) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "event_name",                  default: "", null: false
-    t.string   "header",                      default: "", null: false
-    t.string   "sub_header",                  default: "", null: false
-    t.integer  "price",                       default: 20, null: false
-    t.string   "venue",                       default: "", null: false
-    t.string   "address",                     default: "", null: false
-    t.string   "description",                 default: "", null: false
+    t.string   "event_name",                   default: "", null: false
+    t.string   "header",                       default: "", null: false
+    t.string   "sub_header",                   default: "", null: false
+    t.integer  "price",                        default: 20, null: false
+    t.string   "venue",                        default: "", null: false
+    t.string   "address",                      default: "", null: false
+    t.string   "description",                  default: "", null: false
     t.datetime "date"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(version: 20131223055755) do
     t.string   "bannersquare_content_type"
     t.integer  "bannersquare_file_size"
     t.datetime "bannersquare_updated_at"
+    t.string   "banner1200x2000_file_name"
+    t.string   "banner1200x2000_content_type"
+    t.integer  "banner1200x2000_file_size"
+    t.datetime "banner1200x2000_updated_at"
   end
 
   create_table "events_users", force: true do |t|

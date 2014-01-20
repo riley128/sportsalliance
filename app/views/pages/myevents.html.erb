@@ -1,0 +1,35 @@
+<div class="container">
+	<h2>Upcoming Events</h2>
+
+	<% @event_users.each do |eu| %>
+	<% event = @events.find(eu.event_id) %>
+	<div class="media">
+		<%= link_to event, :class=>"pull-left" do %>
+	    	<%= image_tag event.bannersquare, :size => "150x150" %>
+	  	<% end %>
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= event.header %></h4>
+	    <p><%= event.date %></p>
+	    <p><%= event.venue if event.venue %></p>
+	    <%= link_to "Invite Friends", "#", :class=>"btn btn-primary" %>
+	  </div>
+	</div>
+	<% end %>
+
+	<h2>Past Events</h2>
+	<% @event_users.each do |eu| %>
+	<% event = @events.find(eu.event_id) %>
+	<div class="media">
+	  <a class="pull-left" href="#">
+	    <%= image_tag event.bannersquare, :size => "150x150" %>
+	  </a>
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= event.header %></h4>
+	    <p><%= event.date %></p>
+	    <p><%= event.venue if event.venue %></p>
+	    <%= link_to "Invite Friends", "#", :class=>"btn btn-primary" %>
+	  </div>
+	</div>
+	<% end %>
+
+</div>

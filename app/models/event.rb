@@ -2,12 +2,13 @@ class Event < ActiveRecord::Base
 	has_many :event_users
     has_many :users, :through => :event_users
 
-	attr_accessible :event_name,:header,:sub_header,:banner, :banner600x2000, :bannersquare,:price,:venue,:address,:description,:date,:start_time, :end_time
+	attr_accessible :event_name,:header,:sub_header,:banner, :banner600x2000, :bannersquare, :banner1200x2000, :price,:venue,:address,:description,:date,:start_time, :end_time
 	attr_accessor :stripe_card_token
 
 	has_attached_file :banner, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	has_attached_file :banner600x2000, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	has_attached_file :bannersquare, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+    has_attached_file :banner1200x2000, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
 
 	def add_guest(user)
@@ -18,6 +19,13 @@ class Event < ActiveRecord::Base
         users_with_roles(:guest)
     end
 
+    def add_guest_to_list(user, opts)
+            event_user = GuestList.new
+            event_user.event = self
+            event_user.user = user
+            event_user.send("is_#{role}=", true)
+            event_user.save
+    end
 
 	private
     def get_event_user_for_user(user)
@@ -39,7 +47,6 @@ class Event < ActiveRecord::Base
     def users_with_role(role)
         event_user.select { |ev| ev.send("is_#{role}?") }
     end
-
 
 
 end
